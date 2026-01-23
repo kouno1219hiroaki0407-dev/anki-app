@@ -1,0 +1,134 @@
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  padding: 20px;
+  background: #f0f4f8;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 700;
+  color: #4a6fa5;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 30px;
+  color: #4a6fa5;
+  font-weight: 600;
+}
+
+/* 検索バー */
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #d0d7de;
+  background: #ffffff;
+  font-size: 16px;
+}
+
+/* 上部ボタン群 */
+.top-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.top-buttons button,
+.file-label {
+  flex: 1;
+}
+
+/* reminDo風カード */
+.card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  animation: fadeIn 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+}
+
+/* カード色バリエーション */
+.card.color1 { background: #fff7e6; }
+.card.color2 { background: #e6f7ff; }
+.card.color3 { background: #f9e6ff; }
+.card.color4 { background: #e8ffe6; }
+
+/* 入力エリア */
+.input-area {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 12px;
+  border: 1px solid #d0d7de;
+  background: #f9fbfd;
+  font-size: 15px;
+}
+
+/* ボタン */
+button {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border: none;
+  background: #4a6fa5;
+  color: white;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+button:hover {
+  background: #3b5c8a;
+}
+
+/* ファイル入力ラベル */
+.file-label {
+  margin-top: 12px;
+  padding: 12px 20px;
+  border-radius: 12px;
+  background: #6c8bc0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  cursor: pointer;
+}
+
+.file-label input {
+  display: none;
+}
+
+.status {
+  font-size: 13px;
+  color: #6b7b8c;
+  margin-top: 6px;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>暗記カードアプリ</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- iOS PWA対応 -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="white">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+</head>
+<body>
+
+  <h1>暗記カード</h1>
+
+  <div class="search-box">
+    <input id="search" placeholder="カードを検索（問題・答え）" oninput="searchCards()">
+  </div>
+
+  <div class="top-buttons">
+    <button onclick="reviewToday()">今日の復習</button>
+    <button onclick="randomMode()">ランダム出題</button>
+  </div>
+
+  <div class="top-buttons">
+    <button onclick="exportCards()">エクスポート</button>
+    <label class="file-label">
+      JSONインポート
+      <input type="file" id="importFile" onchange="importCards()" accept="application/json">
+    </label>
+  </div>
+
+  <div class="input-area">
+    <input id="question" placeholder="問題を入力">
+    <textarea id="answer" placeholder="答えを入力"></textarea>
+    <button onclick="addCard()">カードを追加</button>
+  </div>
+
+  <h2>カード一覧</h2>
+  <div id="list"></div>
+
+  <div id="review-area"></div>
+  <div id="random-area"></div>
+
+  <!-- Dexie.js（CDN） -->
+  <script src="https://unpkg.com/dexie@3.2.4/dist/dexie.min.js"></script>
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js");
+    }
+  </script>
+</body>
+</html>
