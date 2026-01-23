@@ -1,0 +1,1466 @@
+[
+  {
+    "q": "ES6 (ECMAScript 2015)",
+    "a": "JavaScriptの標準規格の大きなアップデート。アロー関数やクラス導入。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 1
+  },
+  {
+    "q": "アロー関数",
+    "a": "() => {} 形式の簡潔な関数記述。thisを束縛しない特徴がある。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 2
+  },
+  {
+    "q": "分割代入",
+    "a": "配列やオブジェクトから値を取り出し、別個の変数に代入する記述。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 3
+  },
+  {
+    "q": "スプレッド構文",
+    "a": "... を使い、配列やオブジェクトを展開してコピーや結合を行う",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 4
+  },
+  {
+    "q": "非同期処理",
+    "a": "処理の完了を待たずに次の処理を実行すること。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 5
+  },
+  {
+    "q": "Promise",
+    "a": "非同期処理の「完了」や「失敗」の結果を表すオブジェクト。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 6
+  },
+  {
+    "q": "async/await",
+    "a": "Promiseをより直感的に同期処理のように書くための構文。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 7
+  },
+  {
+    "q": "コールバック関数",
+    "a": "他の関数に引数として渡され、特定のタイミングで実行される関数",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 8
+  },
+  {
+    "q": "クロージャ",
+    "a": "関数とその関数が宣言されたレキシカル環境の組み合わせ",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 9
+  },
+  {
+    "q": "DOM",
+    "a": "HTMLをプログラムから操作するための仕組み（Document Object Model）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 10
+  },
+  {
+    "q": "イベントバブリング",
+    "a": "子要素で発生したイベントが親要素へ伝播していく仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 11
+  },
+  {
+    "q": "厳密等価演算子",
+    "a": "=== を使い、型と値の両方が一致するかを比較する演算子。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 12
+  },
+  {
+    "q": "テンプレートリテラル",
+    "a": "バッククォート (`) を使い、変数埋め込みができる文字列記述。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 13
+  },
+  {
+    "q": "モジュール (import/export)",
+    "a": "コードを部品化し、別のファイルから読み書きする仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 14
+  },
+  {
+    "q": "API",
+    "a": "ソフトウェア同士が情報をやり取りするための窓口。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 15
+  },
+  {
+    "q": "JSON",
+    "a": "データをやり取りするための軽量なテキストフォーマット。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 16
+  },
+  {
+    "q": "パッケージマネージャ",
+    "a": "ライブラリの導入や管理を行うツール（npmやyarnなど）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 17
+  },
+  {
+    "q": "トランスパイル",
+    "a": "最新のJSを古いブラウザでも動くJSに変換すること（Babelなど）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 18
+  },
+  {
+    "q": "高階関数",
+    "a": "関数を引数に取ったり、戻り値として関数を返す関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 19
+  },
+  {
+    "q": "Truthy / Falsy",
+    "a": "Boolean型以外でも、条件式で真または偽と判定される値の性質。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 20
+  },
+  {
+    "q": "配列 [1, 2] を [1, 2, 3] にスプレッド構文で拡張する書き方は？",
+    "a": "[...array, 3]",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 21
+  },
+  {
+    "q": "await を使用する関数の前に付けなければならないキーワードは？",
+    "a": "async",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 22
+  },
+  {
+    "q": "コンポーネント",
+    "a": "UIを構成する再利用可能な最小単位（関数またはクラス）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 23
+  },
+  {
+    "q": "JSX",
+    "a": "JavaScriptの中でHTMLのようなタグを書ける構文。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 24
+  },
+  {
+    "q": "Props",
+    "a": "親から子コンポーネントへデータを渡すための読み取り専用引数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 25
+  },
+  {
+    "q": "State",
+    "a": "コンポーネントが内部で保持する、変更可能な状態データ",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 26
+  },
+  {
+    "q": "Hooks",
+    "a": "クラスを使わずにStateなどのReact機能を使うための関数群。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 27
+  },
+  {
+    "q": "useState",
+    "a": "状態（State）を管理するための最も基本的なHook。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 28
+  },
+  {
+    "q": "useEffect",
+    "a": "レンダリング後の副作用（API取得、購読など）を実行するHook。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 29
+  },
+  {
+    "q": "仮想DOM",
+    "a": "メモリ上のDOMのコピー。変更差分のみを実DOMに反映し高速化する",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 30
+  },
+  {
+    "q": "宣言的UI",
+    "a": "「どう作るか」ではなく「どうあるべきか」を記述する手法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 31
+  },
+  {
+    "q": "単方向データフロー",
+    "a": "データは常に親から子へと一方通行で流れるという原則。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 32
+  },
+  {
+    "q": "Fragment",
+    "a": "余分なタグを増やさずに複数の要素をグループ化する <> </>。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 33
+  },
+  {
+    "q": "Key",
+    "a": "配列のリストを表示する際、Reactが要素を識別するために必要な属性",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 34
+  },
+  {
+    "q": "Context API",
+    "a": "Propsを使わずに、深い階層のコンポーネント間で値を共有する仕組み",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 35
+  },
+  {
+    "q": "useMemo",
+    "a": "計算結果をキャッシュ（メモ化）して再計算を防ぐHook。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 36
+  },
+  {
+    "q": "useCallback",
+    "a": "関数の定義をキャッシュし、不要な再レンダリングを防ぐHook。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 37
+  },
+  {
+    "q": "useRef",
+    "a": "DOM要素への直接アクセスや、値を保持し続けるためのHook",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 38
+  },
+  {
+    "q": "副作用 (Side Effects)",
+    "a": "関数の戻り値以外に、外部に影響を与える処理",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 39
+  },
+  {
+    "q": "制御コンポーネント",
+    "a": "フォームの入力をReactのStateで管理する手法",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 40
+  },
+  {
+    "q": "カスタムフック",
+    "a": "独自のロジックを切り出し、useから始まる関数として再利用する。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 41
+  },
+  {
+    "q": "React Router",
+    "a": "Reactでシングルページアプリケーション（SPA）のルーティングを行うライブラリ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 42
+  },
+  {
+    "q": "useState で返される2つの要素は何と何？",
+    "a": "在の状態値と、それを更新するための関数",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 43
+  },
+  {
+    "q": "リストレンダリング（map）で各要素に一意の値を設定する属性名は？",
+    "a": "key",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 44
+  },
+  {
+    "q": "V8エンジン",
+    "a": "Googleが開発した、JavaScriptを高速に実行するためのエンジン。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 45
+  },
+  {
+    "q": "ノンブロッキングI/O",
+    "a": "I/O処理（通信やファイル操作）の完了を待たずに次へ進む仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 46
+  },
+  {
+    "q": "イベントループ",
+    "a": "シングルスレッドで非同期処理を効率よく回すための核となる仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 47
+  },
+  {
+    "q": "npm",
+    "a": "Node.jsの標準的なパッケージマネージャ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 48
+  },
+  {
+    "q": "package.json",
+    "a": "プロジェクトの依存関係や設定を管理するファイル。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 49
+  },
+  {
+    "q": "Express",
+    "a": "Node.jsで最も普及しているWebアプリケーションフレームワーク。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 50
+  },
+  {
+    "q": "CommonJS",
+    "a": "Node.jsで使われてきた require / module.exports の形式",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 51
+  },
+  {
+    "q": "Middleware",
+    "a": "リクエストとレスポンスの中間で実行される関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 52
+  },
+  {
+    "q": "Stream",
+    "a": "大容量データを分割して少しずつ読み書きする仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 53
+  },
+  {
+    "q": "Buffer",
+    "a": "バイナリデータを一時的に保持するためのメモリ領域。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 54
+  },
+  {
+    "q": "FSモジュール",
+    "a": "ファイルシステムの読み書きを行う標準モジュール",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 55
+  },
+  {
+    "q": "Pathモジュール",
+    "a": "ファイルやディレクトリのパスを操作する標準モジュール。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 56
+  },
+  {
+    "q": "Environment Variables",
+    "a": "環境変数。.env ファイルなどで設定を管理する。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 57
+  },
+  {
+    "q": "REPL",
+    "a": "対話型実行環境（Read-Eval-Print Loop）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 58
+  },
+  {
+    "q": "Worker Threads",
+    "a": "CPU負荷の高い処理を別スレッドで並列実行する仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 59
+  },
+  {
+    "q": "Fastify",
+    "a": "速度を重視したNode.js向けのフレームワーク",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 60
+  },
+  {
+    "q": "node_modules",
+    "a": "インストールしたライブラリが保存されるディレクトリ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 61
+  },
+  {
+    "q": "Processオブジェクト",
+    "a": "実行中のプロセスに関する情報を持つグローバルオブジェクト。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 62
+  },
+  {
+    "q": "Globalオブジェクト",
+    "a": "ブラウザの window に相当する、Node.jsのグローバル空間",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 63
+  },
+  {
+    "q": "Socket.io",
+    "a": "リアルタイムな双方向通信を可能にするライブラリ",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 64
+  },
+  {
+    "q": "Node.jsの標準パッケージ管理ツールの名前は？",
+    "a": "npm",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 65
+  },
+  {
+    "q": "他のファイルからモジュールを読み込む際、CommonJS形式で使う関数は",
+    "a": "require()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 66
+  },
+  {
+    "q": "SSR (Server Side Rendering)",
+    "a": "リクエストごとにサーバーでHTMLを生成する手法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 67
+  },
+  {
+    "q": "SSG (Static Site Generation)",
+    "a": "ビルド時にHTMLを事前に生成する手法。高速",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 68
+  },
+  {
+    "q": "ISR (Incremental Static Regeneration)",
+    "a": "公開後にバックグラウンドで静的ページを再生成する手法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 69
+  },
+  {
+    "q": "App Router",
+    "a": "Next.js 13から導入された、ディレクトリ構造による新しいルーティング。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 70
+  },
+  {
+    "q": "Server Components",
+    "a": "サーバー側でのみ実行され、JS量を削減できるコンポーネント。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 71
+  },
+  {
+    "q": "サーバー側でのみ実行され、JS量を削減できるコンポーネント。",
+    "a": "'use client' を宣言し、ブラウザで実行されるコンポーネント",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 72
+  },
+  {
+    "q": "Hydration",
+    "a": "静的なHTMLにJavaScriptを紐付け、対話可能にすること",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 73
+  },
+  {
+    "q": "Dynamic Routing",
+    "a": "ファイル名に [id].js などを用い、動的なURLを生成すること。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 74
+  },
+  {
+    "q": "API Routes",
+    "a": "api/ ディレクトリ内にAPIエンドポイントを作成できる機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 75
+  },
+  {
+    "q": "Image Component",
+    "a": "画像の最適化（リサイズ、Lazy Load）を自動で行うコンポーネント。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 76
+  },
+  {
+    "q": "Link Component",
+    "a": "クライアント側で高速なページ遷移を行うためのタグ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 77
+  },
+  {
+    "q": "Pre-fetching",
+    "a": "画面内のリンク先データを、ユーザーがクリックする前に読み込む機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 78
+  },
+  {
+    "q": "Middleware (Next.js)",
+    "a": "ページ表示前に認証チェックなどを実行する機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 79
+  },
+  {
+    "q": "Layouts",
+    "a": "複数のページ間で共通のUI（ヘッダー等）を定義する仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 80
+  },
+  {
+    "q": "Metadata API",
+    "a": "SEO用のtitleやmetaタグを管理する新しい仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 81
+  },
+  {
+    "q": "SWC",
+    "a": "Rust製の非常に高速なコンパイラ（Babelの代替）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 82
+  },
+  {
+    "q": "Vercel",
+    "a": "Next.jsの開発元が提供する、デプロイに最適なプラットフォーム。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 83
+  },
+  {
+    "q": "Fast Refresh",
+    "a": "編集内容を即座に反映しつつ、アプリの状態を保持する機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 84
+  },
+  {
+    "q": "SEO",
+    "a": "検索エンジン最適化。Next.jsはこれに強い構成を組みやすい。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 85
+  },
+  {
+    "q": "Turbopack",
+    "a": "Next.js向けに最適化された超高速なビルドツール。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 86
+  },
+  {
+    "q": "Next.jsでクライアント側でのみ動くコンポーネントを作る際に冒頭に書く文字列は？",
+    "a": "'use client'",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 87
+  },
+  {
+    "q": "ビルド時にページを作成し、リクエスト時にはすでにHTMLがある状態にする手法は",
+    "a": "SSG (Static Site Generation)",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 88
+  },
+  {
+    "q": "ディレクティブ",
+    "a": "HTMLタグに付ける v- で始まる特別な属性（v-ifなど）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 89
+  },
+  {
+    "q": "Options API",
+    "a": "data, methods などのオブジェクト形式で記述する従来の手法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 90
+  },
+  {
+    "q": "Composition API",
+    "a": "Vue 3から導入された、setup 関数内でロジックを整理する手法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 91
+  },
+  {
+    "q": "v-bind",
+    "a": "HTML属性とデータを同期させるディレクティブ。短縮記法は :",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 92
+  },
+  {
+    "q": "v-on",
+    "a": "イベント（クリック等）を監視するディレクティブ。短縮記法は @",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 93
+  },
+  {
+    "q": "v-model",
+    "a": "フォーム入力とデータの「双方向データバインディング」を行う。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 94
+  },
+  {
+    "q": "Reactivity",
+    "a": "データが変化すると自動的にUIが更新される仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 95
+  },
+  {
+    "q": "ref / reactive",
+    "a": "Composition APIでリアクティブな値を定義するための関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 96
+  },
+  {
+    "q": "Computed",
+    "a": "依存するデータに基づいて計算され、結果をキャッシュする算出プロパティ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 97
+  },
+  {
+    "q": "Watch",
+    "a": "特定のデータの変化を監視し、副作用を実行する機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 98
+  },
+  {
+    "q": "SFC (Single File Component)",
+    "a": "HTML, CSS, JSを1つの .vue ファイルにまとめる形式。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 99
+  },
+  {
+    "q": "v-if / v-show",
+    "a": "条件付きレンダリング。v-ifは破棄、v-showは非表示。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 100
+  },
+  {
+    "q": "v-for",
+    "a": "配列などを元に要素を繰り返しレンダリングする。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 101
+  },
+  {
+    "q": "Slot",
+    "a": "親から子コンポーネントの特定の場所にコンテンツを注入する仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 102
+  },
+  {
+    "q": "Provide / Inject",
+    "a": "階層が深いコンポーネント間でデータを渡す仕組み（ReactのContextに近い）。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 103
+  },
+  {
+    "q": "Lifecycle Hooks",
+    "a": "onMounted など、コンポーネントの状態変化時に実行される関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 104
+  },
+  {
+    "q": "Pinia",
+    "a": "Vue 3で推奨されている、シンプルで型安全な状態管理ライブラリ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 105
+  },
+  {
+    "q": "Vue Router",
+    "a": "Vue.js公式のルーティングライブラリ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 106
+  },
+  {
+    "q": "Vite",
+    "a": "Vueの作者が開発した、超高速なビルド・開発ツール。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 107
+  },
+  {
+    "q": "Teleport",
+    "a": "コンポーネントのDOM要素を、DOMツリー内の別の場所に転送する機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 108
+  },
+  {
+    "q": "双方向データバインディングを実現するVueのディレクティブは？",
+    "a": "v-model",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 109
+  },
+  {
+    "q": ".vue ファイルにおいて、ロジック・テンプレート・スタイルを1つにまとめる形式の名称は",
+    "a": "SFC (Single File Component)",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 110
+  },
+  {
+    "q": "レキシカルスコープ",
+    "a": "変数が「どこで宣言されたか」によって決まるスコープの仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 111
+  },
+  {
+    "q": "高階関数 (Higher-order)",
+    "a": "map, filter, reduceのように、関数を引数に取る関数の総称。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 112
+  },
+  {
+    "q": "短絡評価",
+    "a": "&& や",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 113
+  },
+  {
+    "q": "Null合体演算子",
+    "a": "undefined または null の場合のみ右辺の値を返す演算子。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 114
+  },
+  {
+    "q": "オプショナルチェイニング",
+    "a": "?. を使い、値がnull/undefinedでもエラーを投げず undefined を返す。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 115
+  },
+  {
+    "q": "const user = { name: \"Tanaka\" }; から、存在しない user.age を参照してもエラーにならない書き方は？",
+    "a": "user?.age /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 116
+  },
+  {
+    "q": "const list = [1, 2, 3]; から「偶数だけ」を抽出するメソッドは？",
+    "a": "filter",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 117
+  },
+  {
+    "q": "console.log(0 || \"Default\") の出力は",
+    "a": "\"Default\"",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 118
+  },
+  {
+    "q": "console.log(0 ?? \"Default\") の出力は？",
+    "a": "0",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 119
+  },
+  {
+    "q": "const [a, ...b] = [1, 2, 3]; のとき、b の中身は？",
+    "a": "[2, 3]",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 120
+  },
+  {
+    "q": "非同期処理で、複数のPromiseを同時に開始し、全て終わるまで待つメソッドは？",
+    "a": "Promise.all()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 121
+  },
+  {
+    "q": "this の値を固定して新しい関数を作成するメソッドは？",
+    "a": "bind()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 122
+  },
+  {
+    "q": "文字列 \"10\" を数値の 10 に変換するグローバル関数は？",
+    "a": "parseInt()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 123
+  },
+  {
+    "q": "配列の全要素を計算して1つの値（合計など）にまとめるメソッドは？",
+    "a": "reduce",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 124
+  },
+  {
+    "q": "setTimeout の戻り値（ID）を使ってタイマーを解除する関数は？",
+    "a": "clearTimeout()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 125
+  },
+  {
+    "q": "依存配列",
+    "a": "useEffectなどの第2引数のこと。この値が変わると処理が再実行される。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 126
+  },
+  {
+    "q": "不変性 (Immutability)",
+    "a": "Stateを直接書き換え（state.pushなど）ず、新しいコピーを作ること。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 127
+  },
+  {
+    "q": "Portals",
+    "a": "親コンポーネントのDOMの外側（body直下など）に要素を描画する機能",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 128
+  },
+  {
+    "q": "ForwardRef",
+    "a": "親から受け取った ref を、子の中の特定のDOMへ引き渡す仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 129
+  },
+  {
+    "q": "Strict Mode",
+    "a": "潜在的なバグを見つけるため、開発時に二重にレンダリングを行う機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 130
+  },
+  {
+    "q": "const [count, setCount] = useState(0); で値を1増やす正しい関数呼び出しは？",
+    "a": "setCount(prev => prev + 1)",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 131
+  },
+  {
+    "q": "初回レンダリング時のみ実行したい useEffect の依存配列はどう書く？",
+    "a": "[]（空の配列）",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 132
+  },
+  {
+    "q": "コンポーネントが消える（クリーンアップ）時に処理を呼ぶには、useEffect 内で何を返す？",
+    "a": "関数（return () => { ... }）",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 133
+  },
+  {
+    "q": "inputタグの value をStateと同期させる手法を何という？ 1",
+    "a": "制御コンポーネント",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 134
+  },
+  {
+    "q": "重い計算の結果を保持し、再レンダリングごとの再計算を防ぐHookは？",
+    "a": "useMemo",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 135
+  },
+  {
+    "q": "useContext を使うために、親階層で提供するコンポーネントの名称は？",
+    "a": "Provider",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 136
+  },
+  {
+    "q": "Reactでクラス名の条件分岐を簡潔に書く際によく使われるライブラリは？",
+    "a": "clsx または classnames",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 137
+  },
+  {
+    "q": "props.children は何を指す？",
+    "a": "開始タグと終了タグに挟まれたコンテンツ",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 138
+  },
+  {
+    "q": "コンポーネントの再レンダリングをスキップして高速化する高階コンポーネントは？",
+    "a": "React.memo /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 139
+  },
+  {
+    "q": "フォーム入力を効率化する、有名なReact用ライブラリは？",
+    "a": "React Hook Form",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 140
+  },
+  {
+    "q": "Event Emitter",
+    "a": "特定のイベントが発生した時に実行されるリスナーを登録する仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 141
+  },
+  {
+    "q": "Stream (Pipe)",
+    "a": "readStream.pipe(writeStream) のようにデータを流し込む処理",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 142
+  },
+  {
+    "q": "CORS",
+    "a": "ブラウザから異なるドメインのサーバーへ通信を許可する仕組み。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 143
+  },
+  {
+    "q": "JWT",
+    "a": "認証情報を署名付きのJSONで安全にやり取りするためのトークン規格。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 144
+  },
+  {
+    "q": "Environment Variables",
+    "a": "データベースURLなどの機密情報を保持する process.env",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 145
+  },
+  {
+    "q": "npmでパッケージをインストールし、package.json に記録するコマンドは？",
+    "a": "npm install <package>",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 146
+  },
+  {
+    "q": "fs.readFileSync と fs.readFile の最大の違いは？",
+    "a": "同期処理か非同期処理か",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 147
+  },
+  {
+    "q": "Expressでパスパラメータ :id を取得するコードは req.params. 何？",
+    "a": "req.params.id",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 148
+  },
+  {
+    "q": "POSTリクエストのJSONデータを解析するためにExpressで使うミドルウェアは？",
+    "a": "express.json()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 149
+  },
+  {
+    "q": "サーバーのポート番号を指定して起動するExpressのメソッドは？",
+    "a": "app.listen()",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 150
+  },
+  {
+    "q": "Node.jsで絶対パスを作成する際、現在のディレクトリを指すグローバル変数は？",
+    "a": "__dirname　/",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 151
+  },
+  {
+    "q": "npm install の後に実行される、脆弱性チェックのコマンドは？",
+    "a": "npm audit",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 152
+  },
+  {
+    "q": "サーバーを停止せずにコード変更を反映させる（ホットリロード）ためのツールは？",
+    "a": "nodemon /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 153
+  },
+  {
+    "q": "Node.js標準のHTTPサーバーを作成するモジュール名は？",
+    "a": "http /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 154
+  },
+  {
+    "q": "パッケージのバージョンを固定するためのファイル名は？",
+    "a": "package-lock.json",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 155
+  },
+  {
+    "q": "Streaming",
+    "a": "ページの一部を準備できた順に逐次クライアントへ送る仕組み",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 156
+  },
+  {
+    "q": "Suspense",
+    "a": "データ読み込み中の「待機状態（loading）」を定義するReactの機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 157
+  },
+  {
+    "q": "Dynamic Functions",
+    "a": "cookies() や headers() など、リクエスト時にしか確定しない関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 158
+  },
+  {
+    "q": "Server Actions",
+    "a": "フォーム送信時などに、サーバー側の関数を直接呼び出せる機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 159
+  },
+  {
+    "q": "Route Handlers",
+    "a": "api/route.ts ファイルで定義する、カスタムリクエストハンドラ。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 160
+  },
+  {
+    "q": "App Routerで各ディレクトリのデフォルト画面となるファイル名は？ 3",
+    "a": "page.tsx",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 161
+  },
+  {
+    "q": "loading.tsx は何というReactコンポーネントを自動で生成する？",
+    "a": "Suspense",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 162
+  },
+  {
+    "q": "クライアントコンポーネントでURLのパス（/ja/homeなど）を取得するHookは？",
+    "a": "usePathname /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 163
+  },
+  {
+    "q": "リンク要素 <a> の代わりにNext.jsで使うコンポーネントは？",
+    "a": "<Link>",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 164
+  },
+  {
+    "q": "next/image が提供する、画像読み込み完了まで表示するぼかし機能は？",
+    "a": "placeholder=\"blur\" /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 165
+  },
+  {
+    "q": "ページが404エラーの時に表示される特別なファイル名は？",
+    "a": "not-found.tsx",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 166
+  },
+  {
+    "q": "Server Actionsを定義する際、ファイルの先頭に書く記述は？",
+    "a": "revalidatePath /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 167
+  },
+  {
+    "q": "layout.tsx が page.tsx を受け取るためのprops名は？",
+    "a": "children /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 168
+  },
+  {
+    "q": "Next.jsでフォントを最適化して読み込むための標準モジュールは？",
+    "a": "next/font",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 169
+  },
+  {
+    "q": "script setup",
+    "a": "<script setup> と書き、ボイラープレートを削減する最新の記法。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 170
+  },
+  {
+    "q": "shallowRef",
+    "a": "中身のプロパティまでは監視せず、値の入れ替えのみを監視する軽量ref",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 171
+  },
+  {
+    "q": "nextTick",
+    "a": "DOMの更新が完了した直後に処理を実行するための関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 172
+  },
+  {
+    "q": "KeepAlive",
+    "a": "コンポーネントを切り替えても、元の状態やDOMを保持する機能。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 173
+  },
+  {
+    "q": "Composables",
+    "a": "Composition APIを使い、外部ファイルにロジックを抽出した関数。",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 174
+  },
+  {
+    "q": "ref で作った値の中身にアクセスするためのプロパティ名は？",
+    "a": ".value /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 175
+  },
+  {
+    "q": "v-for=\"item in items\" を使う際、必須となる属性は？",
+    "a": ":key /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 176
+  },
+  {
+    "q": "v-if と v-show、CSSの display: none で切り替えるのはどっち？",
+    "a": "v-show /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 177
+  },
+  {
+    "q": "親コンポーネントにイベントを通知（発火）するための関数は？",
+    "a": "emit /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 178
+  },
+  {
+    "q": "computed で定義した値は、依存する値が変わらない限り再計算されない。これを何という？",
+    "a": "キャッシュ（Caching） /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 179
+  },
+  {
+    "q": "複数の要素をラップするが、自身はDOMとして描画されないタグは？",
+    "a": "<template> /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 180
+  },
+  {
+    "q": "v-model の修飾子で、入力を自動的に数値に変換するものは？",
+    "a": ".number /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 181
+  },
+  {
+    "q": "Vue 3のプロジェクト作成で推奨されているコマンドは npm create 何？",
+    "a": "vue@latest /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 182
+  },
+  {
+    "q": "<style> タグ内で、そのコンポーネントのみにスタイルを適用する属性は？",
+    "a": "scoped /",
+    "learned": false,
+    "reviewCount": 0,
+    "nextReview": "2026-01-23",
+    "id": 183
+  }
+]

@@ -10,7 +10,7 @@
   <!-- iOS PWA対応 -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
-  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/icons-192.png">
 </head>
 <body>
 
@@ -21,8 +21,8 @@
   </div>
 
   <div class="top-buttons">
-    <button onclick="reviewToday()">今日の復習</button>
-    <button onclick="randomMode()">ランダム出題</button>
+    <button id="btn-review-today" onclick="reviewToday()">今日の復習</button>
+    <button id="btn-random" onclick="randomMode()">ランダム出題</button>
   </div>
 
   <div class="top-buttons">
@@ -40,8 +40,8 @@
   </div>
 
   <h2>カード一覧</h2>
-  <div id="list"></div>
 
+  <div id="list"></div>
   <div id="review-area"></div>
   <div id="random-area"></div>
 

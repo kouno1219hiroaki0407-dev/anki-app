@@ -1,16 +1,36 @@
 let cards = [];
+let reviewList = [];
+let reviewIndex = 0;
 
-// 初期ロード
+/* 表示切り替え */
+function showArea(area) {
+  const areas = ["list", "review-area", "random-area"];
+  areas.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.style.display = (id === area) ? "block" : "none";
+  });
+}
+
+/* 初期ロード */
 (async () => {
-  cards = await dbGetAll();
+  try {
+    cards = typeof dbGetAll === "function" ? await dbGetAll() : [];
+  } catch (err) {
+    console.error("DB 初期化エラー:", err);
+    cards = [];
+  }
   render();
+  showArea("list");
 })();
 
+/* 色ランダム */
 function getRandomColorClass() {
   const colors = ["color1", "color2", "color3", "color4"];
   return colors[Math.floor(Math.random() * colors.length)];
 }
 
+/* カード追加 */
 async function addCard() {
   const q = document.getElementById("question").value;
   const a = document.getElementById("answer").value;
@@ -29,10 +49,13 @@ async function addCard() {
   cards.push(card);
 
   render();
+  showArea("list");
+
   document.getElementById("question").value = "";
   document.getElementById("answer").value = "";
 }
 
+/* 覚えた／未学習切り替え */
 async function toggleLearned(id) {
   const card = cards.find(c => c.id === id);
   if (!card) return;
@@ -42,6 +65,7 @@ async function toggleLearned(id) {
   render();
 }
 
+/* 一覧表示 */
 function render(list = cards) {
   const container = document.getElementById("list");
   container.innerHTML = "";
@@ -86,39 +110,92 @@ function scheduleNextReview(card) {
 
 /* 今日の復習 */
 async function reviewToday() {
-  const today = new Date().toISOString().split("T")[0];
-  const dueCards = cards.filter(c => c.nextReview <= today);
+  showArea("review-area");
 
-  if (dueCards.length === 0) {
-    alert("今日復習するカードはありません");
+  const area = document.getElementById("review-area");
+  area.innerHTML = `<div class="card"><em>処理中...</em></div>`;
+
+  const today = new Date().toISOString().split("T")[0];
+  reviewList = cards.filter(c => c.nextReview <= today);
+  reviewIndex = 0;
+
+  if (reviewList.length === 0) {
+    area.innerHTML = `<div class="card"><em>今日の復習はありません</em></div>`;
     return;
   }
 
-  showReviewCard(dueCards, 0);
+  showReviewCard();
 }
 
-function showReviewCard(list, index) {
-  const card = list[index];
+/* スワイプ判定 */
+let touchStartX = 0;
+let touchEndX = 0;
+
+function handleTouchStart(e) {
+  touchStartX = e.changedTouches[0].screenX;
+}
+
+function handleTouchEnd(e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+}
+
+function handleSwipe() {
+  const diff = touchEndX - touchStartX;
+
+  if (diff < -50) {
+    nextReviewCard();
+  }
+  if (diff > 50) {
+    prevReviewCard();
+  }
+}
+
+function showReviewCard() {
+  const card = reviewList[reviewIndex];
   const area = document.getElementById("review-area");
+  const uid = `rev-${Date.now()}-${reviewIndex}`;
 
   area.innerHTML = `
-    <div class="card">
-      <h3>今日の復習 (${index + 1}/${list.length})</h3>
+    <div class="card review-card" id="review-card">
+      <h3>今日の復習 (${reviewIndex + 1}/${reviewList.length})</h3>
       <b>${card.q}</b><br>
-      <span id="rev-answer" style="display:none">${card.a}</span><br>
+      <span id="${uid}" style="display:none">${card.a}</span><br>
 
-      <button onclick="document.getElementById('rev-answer').style.display='block'">
+      <button onclick="document.getElementById('${uid}').style.display='block'">
         答えを見る
       </button>
 
-      <button onclick="finishReview(${card.id}, ${index}, ${list.length})">
+      <button onclick="finishReview(${card.id})">
         覚えた！
       </button>
+
+      <p style="font-size:14px; color:#666; margin-top:10px;">
+        ※ 左右スワイプで移動できます
+      </p>
     </div>
   `;
+
+  const cardDiv = document.getElementById("review-card");
+  cardDiv.addEventListener("touchstart", handleTouchStart);
+  cardDiv.addEventListener("touchend", handleTouchEnd);
 }
 
-async function finishReview(id, index, total) {
+function nextReviewCard() {
+  if (reviewIndex < reviewList.length - 1) {
+    reviewIndex++;
+    showReviewCard();
+  }
+}
+
+function prevReviewCard() {
+  if (reviewIndex > 0) {
+    reviewIndex--;
+    showReviewCard();
+  }
+}
+
+async function finishReview(id) {
   const card = cards.find(c => c.id === id);
   if (!card) return;
 
@@ -128,35 +205,44 @@ async function finishReview(id, index, total) {
     reviewCount: card.reviewCount
   });
 
-  const today = new Date().toISOString().split("T")[0];
-  const remaining = cards.filter(c => c.nextReview <= today);
-
-  if (remaining.length > 0 && index + 1 < total) {
-    showReviewCard(remaining, 0);
+  reviewIndex++;
+  if (reviewIndex < reviewList.length) {
+    showReviewCard();
   } else {
     alert("今日の復習は完了しました！");
     document.getElementById("review-area").innerHTML = "";
     cards = await dbGetAll();
     render();
+    showArea("list");
   }
 }
 
 /* ランダム出題 */
 function randomMode() {
-  if (cards.length === 0) return alert("カードがありません");
+  showArea("random-area");
+
+  const area = document.getElementById("random-area");
+  area.innerHTML = `<div class="card"><em>処理中...</em></div>`;
+
+  if (cards.length === 0) {
+    area.innerHTML = `<div class="card"><em>カードがありません</em></div>`;
+    return;
+  }
 
   const randomIndex = Math.floor(Math.random() * cards.length);
   const card = cards[randomIndex];
+  const uid = `rand-${Date.now()}-${randomIndex}`;
 
-  const area = document.getElementById("random-area");
   area.innerHTML = `
     <div class="card">
       <h3>ランダム出題</h3>
       <b>${card.q}</b><br>
-      <span id="rand-answer" style="display:none">${card.a}</span><br>
-      <button onclick="document.getElementById('rand-answer').style.display='block'">
+      <span id="${uid}" style="display:none">${card.a}</span><br>
+
+      <button onclick="document.getElementById('${uid}').style.display='block'">
         答えを見る
       </button>
+
       <button onclick="randomMode()">次の問題</button>
     </div>
   `;
@@ -170,9 +256,10 @@ function searchCards() {
     card.a.toLowerCase().includes(keyword)
   );
   render(filtered);
+  showArea("list");
 }
 
-/* エクスポート（DexieからJSON） */
+/* エクスポート */
 async function exportCards() {
   const all = await dbGetAll();
   const blob = new Blob([JSON.stringify(all, null, 2)], { type: "application/json" });
@@ -186,7 +273,7 @@ async function exportCards() {
   URL.revokeObjectURL(url);
 }
 
-/* インポート（JSON → Dexie） */
+/* インポート */
 async function importCards() {
   const file = document.getElementById("importFile").files[0];
   if (!file) return;
@@ -196,7 +283,6 @@ async function importCards() {
     try {
       const imported = JSON.parse(e.target.result);
 
-      // idを消して新規として登録
       const normalized = imported.map(c => ({
         q: c.q,
         a: c.a,
@@ -214,4 +300,16 @@ async function importCards() {
     }
   };
   reader.readAsText(file);
+}
+
+/* グローバル公開 */
+if (typeof window !== 'undefined') {
+  window.addCard = addCard;
+  window.toggleLearned = toggleLearned;
+  window.reviewToday = reviewToday;
+  window.randomMode = randomMode;
+  window.searchCards = searchCards;
+  window.exportCards = exportCards;
+  window.importCards = importCards;
+  window.finishReview = finishReview;
 }
