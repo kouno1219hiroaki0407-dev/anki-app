@@ -2,58 +2,68 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>暗記カードアプリ</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="manifest" href="manifest.json">
+  <title>構文対応 暗記カードアプリ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- iOS PWA対応 -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="white">
-  <link rel="apple-touch-icon" href="icons/icons-192.png">
 </head>
 <body>
 
-  <h1>暗記カード</h1>
+<h1>構文対応 暗記カード</h1>
 
-  <div class="search-box">
-    <input id="search" placeholder="カードを検索（問題・答え）" oninput="searchCards()">
+<div id="top-buttons">
+  <button id="openSavedBtn">保存済みカード一覧</button>
+</div>
+
+<input type="file" id="fileInput" accept=".json">
+<button id="loadFileBtn">cards.json を読み込む</button>
+<div id="mainScreen">
+
+  <div id="card-container">
+    <!-- JSでカードを描画 -->
   </div>
 
-  <div class="top-buttons">
-    <button id="btn-review-today" onclick="reviewToday()">今日の復習</button>
-    <button id="btn-random" onclick="randomMode()">ランダム出題</button>
+  <div id="input-area">
+    <input id="answerInput" placeholder="答えを入力">
+    <button id="checkBtn">答え合わせ</button>
+    <button id="saveCardBtn">このカードを保存する</button>
+
+    <div id="categoryArea">
+      <label>カテゴリ:</label>
+      <select id="categorySelect">
+        <option value="JavaScript">JavaScript</option>
+        <option value="Python">Python</option>
+        <option value="React">React</option>
+        <option value="その他">その他</option>
+      </select>
+    </div>
   </div>
 
-  <div class="top-buttons">
-    <button onclick="exportCards()">エクスポート</button>
-    <label class="file-label">
-      JSONインポート
-      <input type="file" id="importFile" onchange="importCards()" accept="application/json">
-    </label>
-  </div>
+  <div id="result"></div>
+</div>
 
-  <div class="input-area">
-    <input id="question" placeholder="問題を入力">
-    <textarea id="answer" placeholder="答えを入力"></textarea>
-    <button onclick="addCard()">カードを追加</button>
-  </div>
+<div id="savedScreen" style="display:none;">
+  <h2>保存済みカード一覧</h2>
 
-  <h2>カード一覧</h2>
+  <input id="searchSaved" placeholder="キーワード検索">
 
-  <div id="list"></div>
-  <div id="review-area"></div>
-  <div id="random-area"></div>
+  <select id="categoryFilter">
+    <option value="all">すべてのカテゴリ</option>
+  </select>
 
-  <!-- Dexie.js（CDN） -->
-  <script src="https://unpkg.com/dexie@3.2.4/dist/dexie.min.js"></script>
-  <script src="db.js"></script>
-  <script src="app.js"></script>
+  <div id="savedList"></div>
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js");
-    }
-  </script>
+  <button id="exportSavedBtn">保存済みカードをJSONでエクスポート</button>
+  <button id="closeSavedBtn">閉じる</button>
+
+  
+</div>
+
+<script src="https://unpkg.com/dexie@3.2.2/dist/dexie.min.js"></script>
+<script src="db.js"></script>
+<script src="app.js"></script>
 </body>
 </html>

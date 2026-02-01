@@ -1,315 +1,314 @@
-let cards = [];
-let reviewList = [];
-let reviewIndex = 0;
+/**********************************************
+ * ここからアプリ本体
+ **********************************************/
 
-/* 表示切り替え */
-function showArea(area) {
-  const areas = ["list", "review-area", "random-area"];
-  areas.forEach(id => {
-    const el = document.getElementById(id);
-    if (!el) return;
-    el.style.display = (id === area) ? "block" : "none";
-  });
-}
+// ★ ここにインポートした cards.json の中身を読み込む想定
+// 例:
+// let cards = [
+//   { q: "JavaScriptで変数を宣言するキーワードは？", a: "let" },
+//   { q: { type: "code-choice", question: "次のReactコンポーネントの出力は？", code: "...", choices: [...] }, a: "..." }
+// ];
 
-/* 初期ロード */
-(async () => {
-  try {
-    cards = typeof dbGetAll === "function" ? await dbGetAll() : [];
-  } catch (err) {
-    console.error("DB 初期化エラー:", err);
-    cards = [];
+// ローカルファイル読み込み
+document.getElementById("loadFileBtn").addEventListener("click", () => {
+  const fileInput = document.getElementById("fileInput");
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert("cards.json を選択してください。");
+    return;
   }
-  render();
-  showArea("list");
-})();
 
-/* 色ランダム */
-function getRandomColorClass() {
-  const colors = ["color1", "color2", "color3", "color4"];
-  return colors[Math.floor(Math.random() * colors.length)];
-}
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    try {
+      cards = JSON.parse(e.target.result);
 
-/* カード追加 */
-async function addCard() {
-  const q = document.getElementById("question").value;
-  const a = document.getElementById("answer").value;
-  if (!q || !a) return alert("問題と答えを入力してください");
+      // 読み込んだ瞬間にランダム化
+      shuffleCards();
 
-  const card = {
-    q,
-    a,
-    learned: false,
-    reviewCount: 0,
-    nextReview: new Date().toISOString().split("T")[0]
+      currentIndex = 0;
+      renderCard();
+      alert("cards.json を読み込みました！（ランダム化済み）");
+    } catch (err) {
+      alert("JSON の読み込みに失敗しました。");
+    }
   };
 
-  const id = await dbAddCard(card);
-  card.id = id;
-  cards.push(card);
+  reader.readAsText(file);
+});
 
-  render();
-  showArea("list");
-
-  document.getElementById("question").value = "";
-  document.getElementById("answer").value = "";
+// カードの出題順ランダム化
+function shuffleCards() {
+  for (let i = cards.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cards[i], cards[j]] = [cards[j], cards[i]];
+  }
 }
 
-/* 覚えた／未学習切り替え */
-async function toggleLearned(id) {
-  const card = cards.find(c => c.id === id);
-  if (!card) return;
+let cards = []; // 実際は外部から読み込む前提
+let currentIndex = 0;
 
-  card.learned = !card.learned;
-  await dbUpdate(id, { learned: card.learned });
-  render();
-}
+// 保存済みカード（localStorage）
+let savedCards = JSON.parse(localStorage.getItem("savedCards") || "[]");
 
-/* 一覧表示 */
-function render(list = cards) {
-  const container = document.getElementById("list");
-  container.innerHTML = "";
+// 初期化
+window.addEventListener("load", () => {
+  if (cards.length === 0) {
+    document.getElementById("card-container").innerHTML = "<p>cards.json を読み込んでください。</p>";
+  } else {
+    renderCard();
+  }
+});
 
-  list.forEach(card => {
-    const div = document.createElement("div");
-    div.className = "card " + getRandomColorClass();
-
-    div.innerHTML = `
-      <b>${card.q}</b><br>
-      <span style="display:none">${card.a}</span><br>
-      <span class="status">
-        ${card.learned ? "覚えた ✔" : "未学習"} /
-        次回: ${card.nextReview}
-      </span><br>
-      <button onclick="toggleLearned(${card.id})">
-        ${card.learned ? "未学習に戻す" : "覚えた！"}
-      </button>
-    `;
-
-    div.onclick = (e) => {
-      if (e.target.tagName === "BUTTON") return;
-      const ans = div.querySelector("span");
-      ans.style.display = ans.style.display === "none" ? "block" : "none";
-    };
-
-    container.appendChild(div);
-  });
-}
-
-/* 忘却曲線 */
-function scheduleNextReview(card) {
-  const intervals = [1, 3, 7, 14, 30];
-  const days = intervals[Math.min(card.reviewCount, intervals.length - 1)];
-
-  const next = new Date();
-  next.setDate(next.getDate() + days);
-
-  card.nextReview = next.toISOString().split("T")[0];
-  card.reviewCount++;
-}
-
-/* 今日の復習 */
-async function reviewToday() {
-  showArea("review-area");
-
-  const area = document.getElementById("review-area");
-  area.innerHTML = `<div class="card"><em>処理中...</em></div>`;
-
-  const today = new Date().toISOString().split("T")[0];
-  reviewList = cards.filter(c => c.nextReview <= today);
-  reviewIndex = 0;
-
-  if (reviewList.length === 0) {
-    area.innerHTML = `<div class="card"><em>今日の復習はありません</em></div>`;
+// カード描画
+function renderCard() {
+  if (cards.length === 0) {
+    document.getElementById("card-container").innerHTML = "<p>カードがありません。</p>";
+    document.getElementById("answerInput").style.display = "none";
     return;
   }
 
-  showReviewCard();
-}
+  const card = cards[currentIndex];
+  const q = card.q;
 
-/* スワイプ判定 */
-let touchStartX = 0;
-let touchEndX = 0;
+  const container = document.getElementById("card-container");
+  container.innerHTML = "";
+  document.getElementById("result").textContent = "";
+  document.getElementById("answerInput").value = "";
 
-function handleTouchStart(e) {
-  touchStartX = e.changedTouches[0].screenX;
-}
-
-function handleTouchEnd(e) {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-}
-
-function handleSwipe() {
-  const diff = touchEndX - touchStartX;
-
-  if (diff < -50) {
-    nextReviewCard();
+  // 通常モード
+  if (typeof q === "string") {
+    container.innerHTML = `<div class="question">${q}</div>`;
+    showTextInput();
+    return;
   }
-  if (diff > 50) {
-    prevReviewCard();
+
+  // 構文モード
+  let html = `<div class="question">${q.question}</div>`;
+
+  if (q.code) {
+    html += `<pre class="code-block"><code>${q.code}</code></pre>`;
   }
-}
 
-function showReviewCard() {
-  const card = reviewList[reviewIndex];
-  const area = document.getElementById("review-area");
-  const uid = `rev-${Date.now()}-${reviewIndex}`;
-
-  area.innerHTML = `
-    <div class="card review-card" id="review-card">
-      <h3>今日の復習 (${reviewIndex + 1}/${reviewList.length})</h3>
-      <b>${card.q}</b><br>
-      <span id="${uid}" style="display:none">${card.a}</span><br>
-
-      <button onclick="document.getElementById('${uid}').style.display='block'">
-        答えを見る
-      </button>
-
-      <button onclick="finishReview(${card.id})">
-        覚えた！
-      </button>
-
-      <p style="font-size:14px; color:#666; margin-top:10px;">
-        ※ 左右スワイプで移動できます
-      </p>
-    </div>
-  `;
-
-  const cardDiv = document.getElementById("review-card");
-  cardDiv.addEventListener("touchstart", handleTouchStart);
-  cardDiv.addEventListener("touchend", handleTouchEnd);
-}
-
-function nextReviewCard() {
-  if (reviewIndex < reviewList.length - 1) {
-    reviewIndex++;
-    showReviewCard();
+  if (q.choices) {
+    html += `<div class="choices">`;
+    q.choices.forEach((c, i) => {
+      html += `
+        <label class="choice">
+          <input type="radio" name="choice" value="${c}">
+          ${i + 1}. ${c}
+        </label>
+      `;
+    });
+    html += `</div>`;
+    hideTextInput();
+  } else {
+    showTextInput();
   }
+
+  container.innerHTML = html;
 }
 
-function prevReviewCard() {
-  if (reviewIndex > 0) {
-    reviewIndex--;
-    showReviewCard();
+// テキスト入力欄の表示/非表示
+function showTextInput() {
+  document.getElementById("answerInput").style.display = "block";
+}
+function hideTextInput() {
+  document.getElementById("answerInput").style.display = "none";
+}
+
+// 答え合わせ
+document.getElementById("checkBtn").addEventListener("click", () => {
+  if (cards.length === 0) return;
+
+  const card = cards[currentIndex];
+  const correct = card.a;
+
+  let userAnswer = null;
+
+  const selected = document.querySelector("input[name='choice']:checked");
+  if (selected) {
+    userAnswer = selected.value;
+  } else {
+    userAnswer = document.getElementById("answerInput").value.trim();
   }
-}
 
-async function finishReview(id) {
-  const card = cards.find(c => c.id === id);
-  if (!card) return;
+  const result = document.getElementById("result");
+  if (userAnswer === correct) {
+    result.textContent = "⭕ 正解！";
+    result.style.color = "green";
+  } else {
+    result.textContent = `❌ 不正解… 正解は「${correct}」`;
+    result.style.color = "red";
+  }
+});
 
-  scheduleNextReview(card);
-  await dbUpdate(card.id, {
-    nextReview: card.nextReview,
-    reviewCount: card.reviewCount
+// カード保存（保存後に現在のカードを削除）
+document.getElementById("saveCardBtn").addEventListener("click", () => {
+  if (cards.length === 0) return;
+
+  const card = cards[currentIndex];
+  const category = document.getElementById("categorySelect").value;
+
+  savedCards.push({
+    ...card,
+    category: category
   });
 
-  reviewIndex++;
-  if (reviewIndex < reviewList.length) {
-    showReviewCard();
-  } else {
-    alert("今日の復習は完了しました！");
-    document.getElementById("review-area").innerHTML = "";
-    cards = await dbGetAll();
-    render();
-    showArea("list");
-  }
-}
+  localStorage.setItem("savedCards", JSON.stringify(savedCards));
 
-/* ランダム出題 */
-function randomMode() {
-  showArea("random-area");
-
-  const area = document.getElementById("random-area");
-  area.innerHTML = `<div class="card"><em>処理中...</em></div>`;
+  cards.splice(currentIndex, 1);
 
   if (cards.length === 0) {
-    area.innerHTML = `<div class="card"><em>カードがありません</em></div>`;
+    document.getElementById("card-container").innerHTML = "<p>すべて保存しました！</p>";
+    hideTextInput();
     return;
   }
 
-  const randomIndex = Math.floor(Math.random() * cards.length);
-  const card = cards[randomIndex];
-  const uid = `rand-${Date.now()}-${randomIndex}`;
+  if (currentIndex >= cards.length) {
+    currentIndex = cards.length - 1;
+  }
 
-  area.innerHTML = `
-    <div class="card">
-      <h3>ランダム出題</h3>
-      <b>${card.q}</b><br>
-      <span id="${uid}" style="display:none">${card.a}</span><br>
+  renderCard();
+});
 
-      <button onclick="document.getElementById('${uid}').style.display='block'">
-        答えを見る
-      </button>
+// 保存済みカード画面の開閉
+document.getElementById("openSavedBtn").addEventListener("click", () => {
+  document.getElementById("savedScreen").style.display = "block";
+  document.getElementById("mainScreen").style.display = "none";
+  renderSavedList();
+});
 
-      <button onclick="randomMode()">次の問題</button>
-    </div>
-  `;
+document.getElementById("closeSavedBtn").addEventListener("click", () => {
+  document.getElementById("savedScreen").style.display = "none";
+  document.getElementById("mainScreen").style.display = "block";
+});
+
+// カテゴリフィルタ・検索
+document.getElementById("categoryFilter").addEventListener("change", () => {
+  renderSavedList();
+});
+
+document.getElementById("searchSaved").addEventListener("input", () => {
+  renderSavedList();
+});
+
+// 保存済みカード一覧描画
+function renderSavedList() {
+  const list = document.getElementById("savedList");
+  const filter = document.getElementById("categoryFilter").value;
+  const keyword = document.getElementById("searchSaved").value.toLowerCase();
+
+  list.innerHTML = "";
+
+  updateCategoryFilter();
+
+  savedCards
+    .filter(card => filter === "all" || card.category === filter)
+    .filter(card => {
+      const text = typeof card.q === "string" ? card.q : card.q.question;
+      return text.toLowerCase().includes(keyword);
+    })
+    .forEach((card, index) => {
+      const div = document.createElement("div");
+      div.className = "card";
+      div.innerHTML = `
+        <b>${index + 1}</b> [${card.category}]<br>
+        ${typeof card.q === "string" ? card.q : card.q.question}
+        <br>
+        <button onclick="reimportCard(${index})">再インポート</button>
+      `;
+      list.appendChild(div);
+    });
 }
 
-/* 検索 */
-function searchCards() {
-  const keyword = document.getElementById("search").value.toLowerCase();
-  const filtered = cards.filter(card =>
-    card.q.toLowerCase().includes(keyword) ||
-    card.a.toLowerCase().includes(keyword)
-  );
-  render(filtered);
-  showArea("list");
+// カテゴリ一覧更新
+function updateCategoryFilter() {
+  const filter = document.getElementById("categoryFilter");
+  const categories = [...new Set(savedCards.map(c => c.category))];
+
+  const current = filter.value;
+
+  filter.innerHTML = `<option value="all">すべてのカテゴリ</option>`;
+  categories.forEach(cat => {
+    const opt = document.createElement("option");
+    opt.value = cat;
+    opt.textContent = cat;
+    filter.appendChild(opt);
+  });
+
+  if ([...filter.options].some(o => o.value === current)) {
+    filter.value = current;
+  }
 }
 
-/* エクスポート */
-async function exportCards() {
-  const all = await dbGetAll();
-  const blob = new Blob([JSON.stringify(all, null, 2)], { type: "application/json" });
+// 再インポート
+function reimportCard(index) {
+  const card = savedCards[index];
+
+  cards.push({
+    q: card.q,
+    a: card.a
+  });
+
+  savedCards.splice(index, 1);
+  localStorage.setItem("savedCards", JSON.stringify(savedCards));
+
+  renderSavedList();
+}
+
+// 保存済みカードをJSONでエクスポート
+document.getElementById("exportSavedBtn").addEventListener("click", () => {
+  const json = JSON.stringify(savedCards, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
   a.href = url;
-  a.download = "cards.json";
+  a.download = "saved_cards.json";
   a.click();
 
   URL.revokeObjectURL(url);
-}
+});
 
-/* インポート */
-async function importCards() {
-  const file = document.getElementById("importFile").files[0];
-  if (!file) return;
+// スワイプ操作（左右でカード切り替え）
+let touchStartX = 0;
+let touchEndX = 0;
 
-  const reader = new FileReader();
-  reader.onload = async (e) => {
-    try {
-      const imported = JSON.parse(e.target.result);
+document.addEventListener("touchstart", e => {
+  touchStartX = e.changedTouches[0].screenX;
+});
 
-      const normalized = imported.map(c => ({
-        q: c.q,
-        a: c.a,
-        learned: !!c.learned,
-        reviewCount: c.reviewCount || 0,
-        nextReview: c.nextReview || new Date().toISOString().split("T")[0]
-      }));
+document.addEventListener("touchend", e => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
 
-      await dbBulkAdd(normalized);
-      cards = await dbGetAll();
-      render();
-      alert("インポート完了");
-    } catch {
-      alert("JSONファイルが不正です");
+function handleSwipe() {
+  if (document.getElementById("mainScreen").style.display === "none") return;
+
+  const diff = touchEndX - touchStartX;
+  if (Math.abs(diff) < 50) return;
+
+  if (diff > 50) {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderCard();
     }
-  };
-  reader.readAsText(file);
+  } else {
+    if (currentIndex < cards.length - 1) {
+      currentIndex++;
+      renderCard();
+    }
+  }
 }
 
-/* グローバル公開 */
-if (typeof window !== 'undefined') {
-  window.addCard = addCard;
-  window.toggleLearned = toggleLearned;
-  window.reviewToday = reviewToday;
-  window.randomMode = randomMode;
-  window.searchCards = searchCards;
-  window.exportCards = exportCards;
-  window.importCards = importCards;
-  window.finishReview = finishReview;
+// サービスワーカー登録
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js')
+      .then(reg => console.log('ServiceWorker registered:', reg.scope))
+      .catch(err => console.warn('ServiceWorker registration failed:', err));
+  });
 }
