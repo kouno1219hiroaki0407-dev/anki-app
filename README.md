@@ -8,8 +8,7 @@ GitHub Pages 上で動作し、スマホ・PC どちらでも快適に利用で�
 
 ## 🚀 デモ（GitHub Pages）
 
-👉 **https://YOUR_NAME.github.io/YOUR_REPO_NAME/**  
-※ あなたの GitHub Pages URL に置き換えてください。
+👉 https://kouno1219hiroaki0407-dev.github.io/anki-app
 
 ---
 
